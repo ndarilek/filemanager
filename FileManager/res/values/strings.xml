@@ -213,4 +213,9 @@
     <string name="moved">Successfully moved</string>
     <string name="move_error">Some or all items couldn\'t be moved!</string>
     <string name="nothing_to_paste">Nothing to paste. Copy or cut files first.</string>
+    
+    <!-- PathBar -->
+    <string name="pathbar_edit">Edit</string>
+    <string name="pathbar_root">Root</string>
+    <string name="pathbar_go">Go</string>
 </resources>

@@ -101,6 +101,7 @@ public class PathBar extends ViewFlipper {
 
 		// ImageButton -- GONE. Kept this code in case we need to use an right-aligned button in the future.
 		mSwitchToManualModeButton = new ImageButton(getContext());
+		mSwitchToManualModeButton.setContentDescription(getContext().getString(R.string.pathbar_edit));
 		{
 			android.widget.RelativeLayout.LayoutParams layoutParams = new android.widget.RelativeLayout.LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
 			layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
@@ -116,6 +117,7 @@ public class PathBar extends ViewFlipper {
 
 		// ImageButton -- GONE. Kept this code in case we need to use an left-aligned button in the future.
 		ImageButton cdToRootButton = new ImageButton(getContext());
+		cdToRootButton.setContentDescription(getContext().getString(R.string.pathbar_root));
 		{
 			android.widget.RelativeLayout.LayoutParams layoutParams = new android.widget.RelativeLayout.LayoutParams(
 					LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
@@ -196,6 +198,7 @@ public class PathBar extends ViewFlipper {
 				}
 			});
 
+			mGoButton.setContentDescription(getContext().getString(R.string.pathbar_go));
 			manualModeLayout.addView(mGoButton);
 		}
 
