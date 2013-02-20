@@ -231,6 +231,7 @@ class PathButtonLayout extends LinearLayout implements OnLongClickListener {
 			if (mPathDrawables.containsKey(file.getAbsolutePath())) {
 				btn = new ImageButton(navbar.getContext());
 				((ImageButton) btn).setImageResource(mPathDrawables.get(file.getAbsolutePath()));
+				btn.setContentDescription(navbar.getContext().getString(R.string.pathbar_root));
 			} else {
 				btn = new Button(navbar.getContext());
 				
