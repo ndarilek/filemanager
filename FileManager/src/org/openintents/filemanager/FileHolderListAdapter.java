@@ -93,6 +93,7 @@ public class FileHolderListAdapter extends BaseAdapter {
 		ViewHolder holder = (ViewHolder) convertView.getTag();
 		
 		holder.icon.setImageDrawable(item.getIcon());
+		holder.icon.setContentDescription(item.getContentDescription());
 		holder.primaryInfo.setText(item.getName());
 		holder.secondaryInfo.setText(item.getFormattedModificationDate(mContext));
 		// Hide directories' size as it's irrelevant if we can't recursively find it.

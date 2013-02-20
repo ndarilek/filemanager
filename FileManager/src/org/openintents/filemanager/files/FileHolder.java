@@ -4,6 +4,7 @@ import java.io.File;
 import java.text.DateFormat;
 import java.util.Date;
 
+import org.openintents.filemanager.R;
 import org.openintents.filemanager.util.FileUtils;
 import org.openintents.filemanager.util.MimeTypes;
 
@@ -20,12 +21,14 @@ public class FileHolder implements Parcelable, Comparable<FileHolder> {
 	private String mMimeType = "";
 	private Context mContext;
 	private String mExtension;
+	private String mContentDescription;
 	
 	public FileHolder(File f, Context c){
 		mFile = f;
 		mExtension = parseExtension();
 		mMimeType = MimeTypes.newInstance(c).getMimeType(f.getName());
 		mContext = c;
+		mContentDescription = mContext.getString(R.string.details_type_other);
 	}
 	
 	/**
@@ -39,6 +42,7 @@ public class FileHolder implements Parcelable, Comparable<FileHolder> {
 		mExtension = parseExtension();
 		mMimeType = MimeTypes.newInstance(c).getMimeType(f.getName());
 		mContext = c;
+		mContentDescription = mContext.getString(R.string.details_type_other);
 	}
 	
 	/**
@@ -50,23 +54,26 @@ public class FileHolder implements Parcelable, Comparable<FileHolder> {
 		mMimeType = m;
 		mContext = c;
 		getIcon();
+		mContentDescription = mContext.getString(R.string.details_type_other);
 	}
 	
 	/**
 	 * Fastest constructor as it takes everything ready.
 	 */
-	public FileHolder(File f, String m, Drawable i, Context c){
+	public FileHolder(File f, String m, Drawable i, Context c, String d){
 		mFile = f;
 		mIcon = i;
 		mExtension = parseExtension();
 		mMimeType = m;
 		mContext = c;
+		mContentDescription = d;
 	}
 	
 	public FileHolder(Parcel in){
 		mFile = new File(in.readString());
 		mMimeType = in.readString();
 		mExtension = in.readString();
+		mContentDescription = in.readString();
 	}
 
 	public File getFile(){
@@ -84,7 +91,11 @@ public class FileHolder implements Parcelable, Comparable<FileHolder> {
 	public void setIcon(Drawable icon) {
 		mIcon = icon;
 	}
-	
+
+	public String getContentDescription(){
+		return mContentDescription;
+	}
+
 	/**
 	 * Shorthand for getFile().getName().
 	 * @return This file's name. 
@@ -138,6 +149,7 @@ public class FileHolder implements Parcelable, Comparable<FileHolder> {
 		dest.writeString(mFile.getAbsolutePath());
 		dest.writeString(mMimeType);
 		dest.writeString(mExtension);
+		dest.writeString(mContentDescription);
 	}
 	
     public static final Parcelable.Creator<FileHolder> CREATOR = new Parcelable.Creator<FileHolder>() {
