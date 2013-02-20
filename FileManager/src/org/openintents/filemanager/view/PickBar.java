@@ -54,6 +54,7 @@ public class PickBar extends LinearLayout {
 
 			mEditText.setLayoutParams(layoutParams);
 			mEditText.setHint(R.string.filename_hint);
+			mEditText.setContentDescription(getContext().getString(R.string.filename_hint));
 			mEditText.setInputType(InputType.TYPE_TEXT_VARIATION_URI);
 			mEditText.setImeOptions(EditorInfo.IME_ACTION_GO);
 			mEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
@@ -71,6 +72,7 @@ public class PickBar extends LinearLayout {
 		}
 		
 		addView(mEditText);
+		mEditText.requestFocus();
 		addView(mButton);
 	}
 
